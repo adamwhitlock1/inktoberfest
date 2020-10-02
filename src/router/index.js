@@ -1,30 +1,46 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-const routes = [
+export const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/fish',
+    name: 'Fish',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Fish.vue')
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: '/wisp',
+    name: 'Wisp',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Wisp.vue')
+  },
+  {
+    path: '/bulky',
+    name: 'Bulky',
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ '../views/Bulky.vue')
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
-});
+  routes: [
+    ...routes,
+    ...[
+      {
+        path: '/',
+        name: 'Inktober',
+        component: Home
+      },
+      {
+        path: '*',
+        name: 'Coming Soon',
+        component: () => import('../views/NotFound.vue')
+      }
+    ]
+  ]
+})
 
-export default router;
+export default router
