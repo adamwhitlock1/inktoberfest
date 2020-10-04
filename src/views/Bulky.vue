@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>Bulky coming soon..</p>
     <div id="bulky"></div>
   </div>
 </template>
