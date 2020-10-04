@@ -10,6 +10,7 @@
   "dependencies": {
     "@tailwindcss/ui": "^0.6.2",
     "core-js": "^3.6.5",
+    "p5": "^1.1.9",
     "paper": "^0.12.11",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
